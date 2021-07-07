@@ -95,15 +95,15 @@ class DwNetModel(BaseModel):
 
     def encode_input(self, dp_target, source_frame, prev_frame, grid_source, grid_prev, inst_map=None, real_image=None, feat_map=None, infer=False):
 
-        input_label = Variable(dp_target.data.cuda())
-        source_frame =  Variable(source_frame.data.cuda())
-        prev_frame = Variable(prev_frame.data.cuda())
-        grid_source = Variable(grid_source.data.cuda())
-        grid_prev = Variable(grid_prev.data.cuda())
+        input_label = Variable(dp_target.data)
+        source_frame =  Variable(source_frame.data)
+        prev_frame = Variable(prev_frame.data)
+        grid_source = Variable(grid_source.data)
+        grid_prev = Variable(grid_prev.data)
 
         # real images for training
         if real_image is not None:
-            real_image = Variable(real_image.data.cuda())
+            real_image = Variable(real_image.data)
 
         return input_label, source_frame, prev_frame, grid_source, grid_prev, real_image
 
