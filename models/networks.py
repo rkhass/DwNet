@@ -206,7 +206,7 @@ class GlobalGenerator(nn.Module):
         ### grid in the relative coordinates'
         grid_output = interpolate(grid, size= (64, 64), mode='bilinear')
         if not self.no_refining_warp:
-            rel_coord_grid = grid - util.make_coordinate_grid((self.loadSize, self.loadSize), type(grid), self.batchSize).cuda()
+            rel_coord_grid = grid - util.make_coordinate_grid((self.loadSize, self.loadSize), type(grid), self.batchSize)
             warped_source = grid_sample(frame, grid.permute(0, 2, 3, 1), padding_mode = self.grid_padding )
             grid_set = torch.cat([dp_target, warped_source, rel_coord_grid], dim = 1)
             grid_set_output = self.model_downsample_grid_set(grid_set)
